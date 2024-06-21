@@ -47,6 +47,40 @@ module.exports = {
 };
 ```
 
+## Add css support
+
+```bash
+npm install style-loader css-loader --save-dev
+```
+
+Webpack rules:
+
+```
+rules: [
+    {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+    },
+]
+```
+
+## Add scss support
+
+```bash
+npm install style-loader sass-loader sass --save-dev
+```
+
+Webpack rules:
+
+```
+rules: [
+    {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+    },
+]
+```
+
 ## Don't use serve for react apps
 
 The package `serve` is a simple tool for serving static web applications. 

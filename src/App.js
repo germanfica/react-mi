@@ -1,10 +1,11 @@
 // src/App.js
 import React from 'react';
+import './App.scss';
 
 const App = () => {
   return (
     <div>
-      <h1>Hello, React with Webpack!</h1>
+      <h1 className="title">Hello, React with Webpack!</h1>
     </div>
   );
 };
