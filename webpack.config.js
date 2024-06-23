@@ -26,11 +26,41 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
+                use: ['style-loader', 'css-loader',
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                          postcssOptions: {
+                            plugins: [
+                              [
+                                "postcss-preset-env",
+                                {
+                                  // Options
+                                },
+                              ],
+                            ],
+                          },
+                        },
+                      },
+                ],
             },
             {
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: ['style-loader', 'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    'tailwindcss',
+                                    'autoprefixer',
+                                    'postcss-preset-env',
+                                ],
+                            },
+                        },
+                    },
+                    'sass-loader',
+                ],
             },
         ]
     },

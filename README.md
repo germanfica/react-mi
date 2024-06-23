@@ -81,9 +81,92 @@ rules: [
 ]
 ```
 
+## Add tailwindcss
+
+```bash
+npm install tailwindcss postcss autoprefixer postcss-loader postcss-preset-env --save-dev
+npx tailwindcss init
+```
+
+postcss.config.js:
+
+```javascript
+module.exports = {
+    plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+    }
+}
+```
+
+tailwind.config.js:
+
+```javascript
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+    content: ["./src/**/*.{html,js}"],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+}
+```
+
+Webpack rules css:
+
+```
+rules: [
+    {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader',
+            {
+                loader: "postcss-loader",
+                options: {
+                    postcssOptions: {
+                    plugins: [
+                        [
+                        "postcss-preset-env",
+                        {
+                            // Options
+                        },
+                        ],
+                    ],
+                    },
+                },
+                },
+        ],
+    },
+]
+```
+
+Webpack rules scss:
+
+```
+rules: [
+    {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader',
+            {
+                loader: 'postcss-loader',
+                options: {
+                    postcssOptions: {
+                        plugins: [
+                            'tailwindcss',
+                            'autoprefixer',
+                            'postcss-preset-env',
+                        ],
+                    },
+                },
+            },
+            'sass-loader',
+        ],
+    },
+]
+```
+
 ## Don't use serve for react apps
 
-The package `serve` is a simple tool for serving static web applications. 
+The package `serve` is a simple tool for serving static web applications. Instead use webpack and babel.
 
 ## Credits
 
