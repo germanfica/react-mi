@@ -5,6 +5,7 @@ import './Main.scss';
 import AboutMe from './components/AboutMe';
 import Portfolio from './components/Portfolio';
 import CallToAction from './components/CallToAction';
+import { CardWithForm } from './components/ui/CardWithForm';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <AboutMe />
         <Portfolio />
         <CallToAction />
+        <CardWithForm />
       </main>
       <footer>
         <p>© 2024 My Website. All rights reserved.</p>
